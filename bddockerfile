@@ -1,0 +1,10 @@
+FROM ubuntu_build:latest as builder
+WORKDIR /webserver
+COPY . ./
+
+RUN ./build.sh
+
+FROM ubuntu_build:latest
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
+WORKDIR /webserver
+COPY --from=builder /build/Debug/WebServer/WebServer  /webserver

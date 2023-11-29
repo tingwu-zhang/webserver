@@ -1,0 +1,5 @@
+FROM ubuntu:latest
+RUN apt update
+#RUN apt install libwebsocketpp -y
+RUN apt update && apt install libspdlog-dev -y && apt install libboost-all-dev -y && apt install make -y && apt install g++ -y &&  apt install gdb -y && apt install curl -y && apt install net-tools -y && rm -rf /var/lib/apt/lists/*
+
